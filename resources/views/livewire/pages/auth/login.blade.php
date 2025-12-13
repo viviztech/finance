@@ -86,20 +86,6 @@ new #[Layout('layouts.guest')] class extends Component {
             </span>
         </button>
 
-        <!-- Divider -->
-        <div class="relative my-6">
-            <div class="absolute inset-0 flex items-center">
-                <div class="w-full border-t border-gray-200"></div>
-            </div>
-            <div class="relative flex justify-center text-sm">
-                <span class="px-4 bg-white text-gray-500">New to FinanceFlow?</span>
-            </div>
-        </div>
 
-        <!-- Register Link -->
-        <a href="{{ route('register') }}" wire:navigate
-            class="w-full py-3 px-4 border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 flex items-center justify-center">
-            Create an account
-        </a>
     </form>
 </div>
