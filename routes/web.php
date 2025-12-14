@@ -15,12 +15,14 @@ use App\Livewire\Loans\LoanDetails;
 use App\Livewire\Payments\PaymentList;
 use App\Livewire\Payments\PaymentForm;
 use App\Livewire\Payments\DailyCollection;
+use App\Livewire\Payments\OverdueList;
 use App\Livewire\Penalties\PenaltyList;
 use App\Livewire\Dashboard\AdminDashboard;
 use App\Livewire\Reports\BranchReport;
 use App\Livewire\Reports\LoanReport;
 
 Route::view('/', 'welcome');
+Route::view('/contact', 'contact')->name('contact');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard
@@ -77,6 +79,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Payments
     Route::middleware(['can:payments.view'])->group(function () {
         Route::get('payments', PaymentList::class)->name('payments.index');
+        Route::get('payments/overdue', OverdueList::class)->name('payments.overdue');
         Route::get('payments/collect', DailyCollection::class)->name('payments.collect');
         Route::get('payments/create/{loanId?}', PaymentForm::class)->name('payments.create')->middleware('can:payments.create');
     });

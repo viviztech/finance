@@ -95,7 +95,7 @@
             </div>
 
             <!-- Footer -->
-            <p class="text-blue-200 text-sm">© 2024 FinanceFlow. All rights reserved.</p>
+            <p class="text-blue-200 text-sm">© {{ date('Y') }} FinanceFlow. All rights reserved.</p>
         </div>
 
         <!-- Right Side - Auth Form -->
