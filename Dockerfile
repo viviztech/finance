@@ -1,5 +1,5 @@
 # Use official PHP image with Apache
-FROM php:8.2-apache
+FROM php:8.3-apache
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -51,7 +51,7 @@ RUN echo '<Directory /var/www/html/public>\n\
     Options Indexes FollowSymLinks\n\
     AllowOverride All\n\
     Require all granted\n\
-</Directory>' > /etc/apache2/conf-available/laravel.conf \
+    </Directory>' > /etc/apache2/conf-available/laravel.conf \
     && a2enconf laravel
 
 # Expose port 80
