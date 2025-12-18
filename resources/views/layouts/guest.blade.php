@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+@inject('settings', 'App\Services\SettingsService')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'FinanceFlow') }}</title>
+    <title>{{ $settings->get('site_name', 'FinanceFlow') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -63,7 +64,7 @@
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                         </svg>
                     </div>
-                    <span class="text-2xl font-bold text-white">FinanceFlow</span>
+                    <span class="text-2xl font-bold text-white">{{ $settings->get('site_name', 'FinanceFlow') }}</span>
                 </div>
             </div>
 
@@ -95,7 +96,8 @@
             </div>
 
             <!-- Footer -->
-            <p class="text-blue-200 text-sm">© {{ date('Y') }} FinanceFlow. All rights reserved.</p>
+            <p class="text-blue-200 text-sm">© {{ date('Y') }} {{ $settings->get('site_name', 'FinanceFlow') }}. All
+                rights reserved.</p>
         </div>
 
         <!-- Right Side - Auth Form -->
@@ -109,7 +111,8 @@
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                         </svg>
                     </div>
-                    <span class="text-2xl font-bold text-gray-900">FinanceFlow</span>
+                    <span
+                        class="text-2xl font-bold text-gray-900">{{ $settings->get('site_name', 'FinanceFlow') }}</span>
                 </div>
 
                 <!-- Auth Card -->

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+@inject('settings', 'App\Services\SettingsService')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>FinanceFlow - #1 Microfinance Management System | Buy Now</title>
+        <title>{{ $settings->get('site_name', 'FinanceFlow') }} - #1 Microfinance Management System | Buy Now</title>
         <meta name="description" content="Launch your microfinance business in minutes. Complete loan management, branch operations, and collection tracking. Built with Laravel 12.">
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800,900&display=swap" rel="stylesheet" />
@@ -30,7 +31,7 @@
                         <span class="text-white text-xl font-bold">F</span>
                     </div>
                     <div>
-                        <span class="font-bold text-lg">FinanceFlow</span>
+                        <span class="font-bold text-lg">{{ $settings->get('site_name', 'FinanceFlow') }}</span>
                         <span class="hidden sm:inline text-slate-400 text-sm ml-2">v1.0</span>
                     </div>
                 </div>
@@ -103,11 +104,11 @@
                 <h2 class="text-3xl md:text-5xl font-bold mb-6">Stop Wasting <span class="text-red-400">$50,000+</span> on Custom Development</h2>
                 <p class="text-xl text-slate-400 mb-16 max-w-3xl mx-auto">
                     Building a microfinance system from scratch takes 6-12 months and costs a fortune. 
-                    FinanceFlow gives you everything you need — ready to deploy today.
+                    {{ $settings->get('site_name', 'FinanceFlow') }} gives you everything you need — ready to deploy today.
                 </p>
                 <div class="grid md:grid-cols-2 gap-8 text-left">
                     <div class="p-8 rounded-2xl bg-red-500/5 border border-red-500/20">
-                        <h3 class="text-xl font-bold text-red-400 mb-4">❌ Without FinanceFlow</h3>
+                        <h3 class="text-xl font-bold text-red-400 mb-4">❌ Without {{ $settings->get('site_name', 'FinanceFlow') }}</h3>
                         <ul class="space-y-3 text-slate-400">
                             <li>• 6-12 months development time</li>
                             <li>• $30,000 - $100,000 development cost</li>
@@ -117,7 +118,7 @@
                         </ul>
                     </div>
                     <div class="p-8 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
-                        <h3 class="text-xl font-bold text-emerald-400 mb-4">✅ With FinanceFlow</h3>
+                        <h3 class="text-xl font-bold text-emerald-400 mb-4">✅ With {{ $settings->get('site_name', 'FinanceFlow') }}</h3>
                         <ul class="space-y-3 text-slate-400">
                             <li>• Deploy in under 30 minutes</li>
                             <li>• One-time payment of $299</li>
@@ -254,7 +255,7 @@
         <section class="py-24 px-6 bg-gradient-to-br from-emerald-900/20 to-blue-900/20">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to Transform Your Business?</h2>
-                <p class="text-xl text-slate-400 mb-8">Join 50+ companies already using FinanceFlow to manage their operations.</p>
+                <p class="text-xl text-slate-400 mb-8">Join 50+ companies already using {{ $settings->get('site_name', 'FinanceFlow') }} to manage their operations.</p>
                 <a href="{{ route('contact') }}" class="inline-block glow-button px-10 py-5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full font-bold text-xl hover:scale-105 transition-transform">
                     Contact Us For Pricing
                 </a>
@@ -265,7 +266,7 @@
         <!-- Footer -->
         <footer class="py-12 px-6 border-t border-white/5">
             <div class="max-w-7xl mx-auto text-center text-slate-500 text-sm">
-                <p>&copy; {{ date('Y') }} FinanceFlow. All rights reserved. Built with ❤️ using Laravel.</p>
+                <p>&copy; {{ date('Y') }} {{ $settings->get('site_name', 'FinanceFlow') }}. All rights reserved. Built with ❤️ using Laravel.</p>
             </div>
         </footer>
     </body>

@@ -52,7 +52,7 @@
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Principal
                                         Amount (₹) <span class="text-red-500">*</span></label>
-                                    <input type="number" wire:model.live.debounce.300ms="principal_amount" min="1"
+                                    <input type="number" wire:model.live.debounce.300ms="principal_amount" min="100"
                                         step="100"
                                         class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm">
                                     @error('principal_amount')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -116,16 +116,16 @@
                         <div class="space-y-4">
                             <div class="flex justify-between">
                                 <span class="text-indigo-100">Principal:</span>
-                                <span class="font-semibold">₹{{ number_format($principal_amount, 0) }}</span>
+                                <span class="font-semibold">₹{{ number_format((float) $principal_amount, 0) }}</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-indigo-100">Interest:</span>
-                                <span class="font-semibold">₹{{ number_format($interest_amount, 0) }}</span>
+                                <span class="font-semibold">₹{{ number_format((float) $interest_amount, 0) }}</span>
                             </div>
                             <hr class="border-white/30">
                             <div class="flex justify-between text-lg">
                                 <span class="text-indigo-100">Total:</span>
-                                <span class="font-bold">₹{{ number_format($total_amount, 0) }}</span>
+                                <span class="font-bold">₹{{ number_format((float) $total_amount, 0) }}</span>
                             </div>
                             <hr class="border-white/30">
                             <div class="flex justify-between">
@@ -134,7 +134,7 @@
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-indigo-100">Per Installment:</span>
-                                <span class="font-semibold">₹{{ number_format($installment_amount, 2) }}</span>
+                                <span class="font-semibold">₹{{ number_format((float) $installment_amount, 2) }}</span>
                             </div>
                         </div>
                     </div>

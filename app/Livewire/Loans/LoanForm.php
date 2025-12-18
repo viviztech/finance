@@ -20,7 +20,7 @@ class LoanForm extends Component
     public ?int $customer_id = null;
     public ?int $loan_type_id = null;
     public ?int $assigned_agent_id = null;
-    public float $principal_amount = 0;
+    public $principal_amount = 0.0;
     public ?int $total_installments = null;
     public string $start_date = '';
     public string $notes = '';
@@ -32,11 +32,15 @@ class LoanForm extends Component
 
     protected function rules(): array
     {
+        $settings = app(\App\Services\SettingsService::class);
+        $minPrincipal = $settings->get('min_loan_principal', 500);
+        $maxPrincipal = $settings->get('max_loan_principal', 1000000);
+
         return [
             'customer_id' => 'required|exists:customers,id',
             'loan_type_id' => 'required|exists:loan_types,id',
             'assigned_agent_id' => 'nullable|exists:users,id',
-            'principal_amount' => 'required|numeric|min:1',
+            'principal_amount' => "required|numeric|min:{$minPrincipal}|max:{$maxPrincipal}",
             'total_installments' => 'required|integer|min:1',
             'start_date' => 'required|date',
             'notes' => 'nullable|string|max:1000',

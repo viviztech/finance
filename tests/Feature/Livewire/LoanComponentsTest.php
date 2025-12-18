@@ -41,6 +41,8 @@ class LoanComponentsTest extends TestCase
         $role = Role::create(['name' => 'super-admin']);
         $role->givePermissionTo($permissions);
 
+        Role::create(['name' => 'agent']);
+
         // Create branch
         $this->branch = Branch::create([
             'name' => 'Loan Test Branch',

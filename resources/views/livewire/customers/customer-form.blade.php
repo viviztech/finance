@@ -25,6 +25,22 @@
                         </div>
                     @endif
 
+
+                    @if(auth()->user()->isSuperAdmin())
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Branch <span
+                                    class="text-red-500">*</span></label>
+                            <select wire:model="branch_id"
+                                class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm">
+                                <option value="">Select Branch</option>
+                                @foreach($branches as $branch)
+                                    <option value="{{ $branch->id }}">{{ $branch->name }} ({{ $branch->code }})</option>
+                                @endforeach
+                            </select>
+                            @error('branch_id')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+                        </div>
+                    @endif
+
                     <!-- Name -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Full Name <span

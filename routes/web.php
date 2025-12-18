@@ -45,6 +45,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('roles/{roleId}/edit', \App\Livewire\Roles\RoleForm::class)->name('roles.edit');
 
         Route::get('permissions', \App\Livewire\Permissions\PermissionList::class)->name('permissions.index');
+
+        // Settings
+        Route::get('settings', \App\Livewire\Settings\ManageSettings::class)->name('settings');
     });
 
     // Users
