@@ -29,19 +29,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy application files
 COPY . .
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
-
-# Install Node dependencies and build assets
-RUN npm install && npm run build
-
-# Set proper permissions
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage \
-    && chmod -R 755 /var/www/html/bootstrap/cache
-
 # Configure Apache document root
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
@@ -53,6 +42,17 @@ RUN echo '<Directory /var/www/html/public>\n\
     Require all granted\n\
     </Directory>' > /etc/apache2/conf-available/laravel.conf \
     && a2enconf laravel
+
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
+
+# Install Node dependencies and build assets
+RUN npm install && npm run build
+
+# Set proper permissions
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html/storage \
+    && chmod -R 755 /var/www/html/bootstrap/cache
 
 # Expose port 80
 EXPOSE 80
