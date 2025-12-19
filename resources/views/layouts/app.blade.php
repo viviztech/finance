@@ -50,26 +50,42 @@
     </style>
 </head>
 
-<body class="antialiased bg-gray-50">
-    <div class="flex min-h-screen">
+<body class="antialiased bg-gray-50" x-data="{ sidebarOpen: false }">
+    <div class="flex min-h-screen overflow-x-hidden">
+        <!-- Mobile Sidebar Overlay -->
+        <div x-show="sidebarOpen" x-transition:enter="transition-opacity ease-linear duration-300"
+            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+            x-transition:leave="transition-opacity ease-linear duration-300" x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0" @click="sidebarOpen = false"
+            class="fixed inset-0 bg-gray-900/50 z-40 lg:hidden"></div>
+
         <!-- Sidebar -->
-        <aside class="w-64 bg-white border-r border-gray-200 flex flex-col fixed h-full z-30">
+        <aside
+            class="w-64 bg-white border-r border-gray-200 flex flex-col fixed h-full z-50 transition-transform duration-300 ease-in-out lg:translate-x-0"
+            :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
             <!-- Logo -->
-            <div class="p-6 border-b border-gray-100">
+            <div class="p-6 border-b border-gray-100 flex items-center justify-between">
                 <a href="{{ route('dashboard') }}" wire:navigate class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                    <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shrink-0">
                         <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                         </svg>
                     </div>
                     <span
-                        class="text-xl font-bold text-gray-900">{{ $settings->get('site_name', 'FinanceFlow') }}</span>
+                        class="text-xl font-bold text-gray-900 truncate">{{ $settings->get('site_name', 'FinanceFlow') }}</span>
                 </a>
+                <!-- Close Mobile Sidebar -->
+                <button @click="sidebarOpen = false" class="lg:hidden p-2 text-gray-500 hover:bg-gray-100 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
 
             <!-- Navigation -->
-            <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+            <nav class="flex-1 p-4 space-y-1 overflow-y-auto custom-scrollbar">
                 <!-- MAIN Section -->
                 <p class="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Main</p>
 
@@ -241,7 +257,7 @@
                 <div class="mt-4 p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl">
                     <div class="flex items-center gap-3">
                         <div
-                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold shrink-0">
                             {{ substr(auth()->user()?->name ?? 'U', 0, 1) }}
                         </div>
                         <div class="flex-1 min-w-0">
@@ -265,23 +281,33 @@
         </aside>
 
         <!-- Main Content -->
-        <div class="flex-1 ml-64">
+        <div class="flex-1 flex flex-col min-h-screen transition-all duration-300 lg:ml-64 w-full">
             <!-- Top Header -->
             <header class="bg-white border-b border-gray-200 sticky top-0 z-20">
-                <div class="px-8 py-4">
+                <div class="px-4 lg:px-8 py-4 flex items-center gap-4">
+                    <!-- Mobile Hamburger -->
+                    <button @click="sidebarOpen = true"
+                        class="lg:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+
                     @if (isset($header))
-                        {{ $header }}
+                        <div class="flex-1">
+                            {{ $header }}
+                        </div>
                     @endif
                 </div>
             </header>
 
             <!-- Page Content -->
-            <main class="p-8">
+            <main class="p-4 lg:p-8">
                 {{ $slot }}
             </main>
         </div>
     </div>
-
     @livewireScripts
 </body>
 

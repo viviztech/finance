@@ -5,12 +5,12 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg flex">
-
+    <div class="py-6 lg:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg flex flex-col md:flex-row">
                 <!-- Sidebar Tabs -->
-                <div class="w-1/4 border-r border-gray-200 dark:border-gray-700 p-6 space-y-2">
+                <div
+                    class="w-full md:w-1/4 border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-700 p-6 space-y-2">
                     <button wire:click="setTab('general')"
                         class="w-full text-left px-4 py-2 rounded-md flex justify-between items-center {{ $activeTab === 'general' ? 'bg-indigo-50 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700' }}">
                         <span>General</span>
@@ -35,7 +35,7 @@
                 </div>
 
                 <!-- Content Area -->
-                <div class="w-3/4 p-6">
+                <div class="w-full md:w-3/4 p-6">
                     <form wire:submit="save">
                         <!-- Global Error Message -->
                         @if ($errors->any())
@@ -101,7 +101,7 @@
                         @if($activeTab === 'loans')
                             <div class="space-y-6">
                                 <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Loan Configuration</h3>
-                                <div class="grid grid-cols-2 gap-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Min
                                             Principal Amount</label>
