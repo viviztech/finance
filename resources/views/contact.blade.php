@@ -81,7 +81,8 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-white mb-1">Email Us</h3>
-                                <p class="text-slate-400">sales@financeflow.com</p>
+                                <p class="text-slate-400">{{ $settings->get('contact_email',
+                                    'info@nkbbtechnologies.com') }}</p>
                             </div>
                         </div>
 

@@ -12,6 +12,7 @@ class ManageSettings extends Component
 
     protected $rules = [
         'settings.site_name' => 'required|string',
+        'settings.contact_email' => 'required|email',
         'settings.currency_symbol' => 'required|string',
 
         'settings.min_loan_principal' => 'required|integer|min:1',
@@ -28,6 +29,7 @@ class ManageSettings extends Component
         // Load existing settings or defaults
         $this->settings = [
             'site_name' => $settingsService->get('site_name', 'Finance App'),
+            'contact_email' => $settingsService->get('contact_email', 'info@nkbbtechnologies.com'),
             'currency_symbol' => $settingsService->get('currency_symbol', '₹'),
 
             'min_loan_principal' => $settingsService->get('min_loan_principal', 500),
@@ -46,6 +48,7 @@ class ManageSettings extends Component
 
         // General
         $settingsService->set('site_name', $this->settings['site_name'], 'general');
+        $settingsService->set('contact_email', $this->settings['contact_email'], 'general');
         $settingsService->set('currency_symbol', $this->settings['currency_symbol'], 'general');
 
         // Loans

@@ -78,6 +78,15 @@
                                     @enderror
                                 </div>
                                 <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contact
+                                        Email</label>
+                                    <input type="email" wire:model="settings.contact_email"
+                                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm">
+                                    @error('settings.contact_email') <span
+                                        class="text-red-500 text-sm">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div>
                                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Currency
                                         Symbol</label>
                                     <input type="text" wire:model="settings.currency_symbol"

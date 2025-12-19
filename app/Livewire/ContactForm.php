@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Mail;
+use App\Services\SettingsService;
 
 class ContactForm extends Component
 {
@@ -22,12 +23,12 @@ class ContactForm extends Component
         'message' => 'required|min:10|max:1000',
     ];
 
-    public function submit()
+    public function submit(SettingsService $settingsService)
     {
         $this->validate();
 
         // Send email to admin
-        $adminEmail = config('mail.from.address', 'admin@financeflow.com');
+        $adminEmail = $settingsService->get('contact_email', 'info@nkbbtechnologies.com');
 
         Mail::raw(
             "New Contact Form Submission\n\n" .
@@ -37,21 +38,23 @@ class ContactForm extends Component
             "Company: {$this->company}\n\n" .
             "Message:\n{$this->message}",
             function ($mail) use ($adminEmail) {
+                $siteName = app(SettingsService::class)->get('site_name', 'FinanceFlow');
                 $mail->to($adminEmail)
                     ->from($this->email, $this->name)
-                    ->subject('New FinanceFlow Inquiry from ' . $this->name);
+                    ->subject("New {$siteName} Inquiry from " . $this->name);
             }
         );
 
         // Send confirmation to customer
+        $siteName = $settingsService->get('site_name', 'FinanceFlow');
         Mail::raw(
             "Hi {$this->name},\n\n" .
-            "Thank you for your interest in FinanceFlow!\n\n" .
+            "Thank you for your interest in {$siteName}!\n\n" .
             "We have received your inquiry and will get back to you within 24 hours.\n\n" .
-            "Best regards,\nThe FinanceFlow Team",
-            function ($mail) {
+            "Best regards,\nThe {$siteName} Team",
+            function ($mail) use ($siteName) {
                 $mail->to($this->email)
-                    ->subject('Thank you for contacting FinanceFlow');
+                    ->subject("Thank you for contacting {$siteName}");
             }
         );
 
