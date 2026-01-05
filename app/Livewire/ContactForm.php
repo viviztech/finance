@@ -38,7 +38,7 @@ class ContactForm extends Component
             "Company: {$this->company}\n\n" .
             "Message:\n{$this->message}",
             function ($mail) use ($adminEmail) {
-                $siteName = app(SettingsService::class)->get('site_name', 'FinanceFlow');
+                $siteName = app(SettingsService::class)->get('site_name', 'Viviz Finance');
                 $mail->to($adminEmail)
                     ->from($this->email, $this->name)
                     ->subject("New {$siteName} Inquiry from " . $this->name);
@@ -46,7 +46,7 @@ class ContactForm extends Component
         );
 
         // Send confirmation to customer
-        $siteName = $settingsService->get('site_name', 'FinanceFlow');
+        $siteName = $settingsService->get('site_name', 'Viviz Finance');
         Mail::raw(
             "Hi {$this->name},\n\n" .
             "Thank you for your interest in {$siteName}!\n\n" .

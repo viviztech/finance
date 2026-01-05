@@ -1,4 +1,4 @@
-# FinanceFlow - Microfinance Management System
+# Viviz Finance - Microfinance Management System
 
 A modern microfinance management system built with Laravel 12, Livewire 3, and Tailwind CSS.
 

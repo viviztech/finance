@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $settings->get('site_name', 'FinanceFlow') }}</title>
+    <title>Login - {{ $settings->get('site_name', 'Viviz Finance') }} | Secure Microfinance Portal</title>
+    <meta name="description" content="Secure login to Viviz Finance microfinance management system. Access your loan management dashboard, track payments, and manage your branch operations.">
+    <meta name="robots" content="noindex, nofollow">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -64,7 +66,7 @@
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                         </svg>
                     </div>
-                    <span class="text-2xl font-bold text-white">{{ $settings->get('site_name', 'FinanceFlow') }}</span>
+                    <span class="text-2xl font-bold text-white">{{ $settings->get('site_name', 'Viviz Finance') }}</span>
                 </div>
             </div>
 
@@ -96,7 +98,7 @@
             </div>
 
             <!-- Footer -->
-            <p class="text-blue-200 text-sm">© {{ date('Y') }} {{ $settings->get('site_name', 'FinanceFlow') }}. All
+            <p class="text-blue-200 text-sm">© {{ date('Y') }} {{ $settings->get('site_name', 'Viviz Finance') }}. All
                 rights reserved.</p>
         </div>
 
@@ -112,7 +114,7 @@
                         </svg>
                     </div>
                     <span
-                        class="text-2xl font-bold text-gray-900">{{ $settings->get('site_name', 'FinanceFlow') }}</span>
+                        class="text-2xl font-bold text-gray-900">{{ $settings->get('site_name', 'Viviz Finance') }}</span>
                 </div>
 
                 <!-- Auth Card -->

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'FinanceFlow') }} - Page Not Found</title>
+    <title>{{ config('app.name', 'Viviz Finance') }} - Page Not Found</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -45,7 +45,7 @@
         </a>
 
         <div class="mt-12 text-sm text-gray-400">
-            &copy; {{ date('Y') }} {{ config('app.name', 'FinanceFlow') }}. All rights reserved.
+            &copy; {{ date('Y') }} {{ config('app.name', 'Viviz Finance') }}. All rights reserved.
         </div>
     </div>
 </body>

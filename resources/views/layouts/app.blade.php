@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $settings->get('site_name', 'FinanceFlow') }}</title>
+    <title>Dashboard - {{ $settings->get('site_name', 'Viviz Finance') }}</title>
+    <meta name="robots" content="noindex, nofollow">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -73,7 +74,7 @@
                         </svg>
                     </div>
                     <span
-                        class="text-xl font-bold text-gray-900 truncate">{{ $settings->get('site_name', 'FinanceFlow') }}</span>
+                        class="text-xl font-bold text-gray-900 truncate">{{ $settings->get('site_name', 'Viviz Finance') }}</span>
                 </a>
                 <!-- Close Mobile Sidebar -->
                 <button @click="sidebarOpen = false" class="lg:hidden p-2 text-gray-500 hover:bg-gray-100 rounded-lg">

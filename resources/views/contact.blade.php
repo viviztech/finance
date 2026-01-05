@@ -5,9 +5,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact Us - {{ $settings->get('site_name', 'FinanceFlow') }} | Get a Quote</title>
+    <title>Contact Viviz Finance - Get Custom Quote for Microfinance Software | Free Demo</title>
     <meta name="description"
-        content="Contact us to learn more about FinanceFlow microfinance management system. Get a personalized quote today.">
+        content="Contact Viviz Finance for a personalized demo and custom pricing. Get expert consultation on implementing our microfinance loan management system. Free installation assistance. Response within 24 hours.">
+    <meta name="keywords" content="microfinance software quote, loan management demo, contact viviz finance, microfinance consultation, custom pricing">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact Viviz Finance - Get Custom Quote & Free Demo">
+    <meta property="og:description" content="Get personalized demo and custom pricing for Viviz Finance. Expert consultation available. Free installation assistance.">
+
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url('/contact') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800&display=swap" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -28,7 +37,7 @@
                     class="w-10 h-10 bg-gradient-to-br from-emerald-400 to-blue-500 rounded-xl flex items-center justify-center">
                     <span class="text-white text-xl font-bold">F</span>
                 </div>
-                <span class="font-bold text-lg">{{ $settings->get('site_name', 'FinanceFlow') }}</span>
+                <span class="font-bold text-lg">{{ $settings->get('site_name', 'Viviz Finance') }}</span>
             </a>
             <a href="/" class="text-slate-400 hover:text-white text-sm flex items-center gap-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,7 +137,7 @@
                                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                Personalized demo of {{ $settings->get('site_name', 'FinanceFlow') }}
+                                Personalized demo of {{ $settings->get('site_name', 'Viviz Finance') }}
                             </li>
                             <li class="flex items-center gap-2">
                                 <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
@@ -164,7 +173,7 @@
     <!-- Footer -->
     <footer class="py-8 px-6 border-t border-white/5">
         <div class="max-w-7xl mx-auto text-center text-slate-500 text-sm">
-            <p>&copy; {{ date('Y') }} {{ $settings->get('site_name', 'FinanceFlow') }}. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} {{ $settings->get('site_name', 'Viviz Finance') }}. All rights reserved.</p>
         </div>
     </footer>
 </body>
